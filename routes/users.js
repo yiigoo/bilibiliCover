@@ -4,7 +4,7 @@ const superagent = require('superagent')
 router.prefix('/users')
 let _body = '';
 router.get('/', function (ctx, next) {
-	// url = 'http://api.bilibili.com/x/web-interface/view?aid=ss26297' // 封面地址
+	// url = 'http://api.bilibili.com/x/web-interface/view?aid=44695408' // 封面地址
 	// url = 'http://api.bilibili.com/x/player/playurl?avid=44695408&cid=78248069&qn=0&type=mp4type=json&fnver=0&fnval=1&platform=html5&html5=1'
 			  // 视频地址
   url = 'https://comment.bilibili.com/recommendnew,334530000045'; // 当前视频的相关
