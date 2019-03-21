@@ -11,7 +11,7 @@ let funAsync = function ( aid ) {
 		// 获取当前视频的页面
 		const url = `http://api.bilibili.com/x/web-interface/view?aid=${tempAid}` 
 		
-		// 代理抓取
+		// 代理抓取 s
 		superagent.get( url ).end((err, sres) => { 
 			// sres 页面获取到的数据
 			console.log( '抓取：' + tempAid )
