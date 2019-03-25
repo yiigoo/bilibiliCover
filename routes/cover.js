@@ -15,7 +15,6 @@ router.get('/cover/img', async (ctx, next) => {
 			superagent.get( url ).end((err, sres) => { 
 				// sres 页面获取到的数据
 				// 成功
-				console.log(JSON.parse(sres.text).code)
 				if ( JSON.parse(sres.text).code === 0 ){
 					data = JSON.parse(sres.text).data
 				}
