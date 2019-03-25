@@ -3,19 +3,21 @@ extends layout
 block content
 	div#app
 		input(
+			class="search-label"
 			type="text"
 			v-model="keyword"
 			@keyup.enter="search()"
 		)
+		div.tips {{ item.message === '0' ? '' : item.message }}
 		img(
-			:src="msg.pic"
+			v-if="item.data"
+			:src="item.data.pic"
 		)
-		div.test {{msg}}
 
 	script.
 		new Vue({ 
 			el:'#app' , 
-			data : { msg : '' , keyword: '' } ,
+			data : { item : { data : '' , message : '' } , keyword: '' } ,
 			methods : {
 				get_imgs ( aid = '' ){
 					axios.get( '/cover/img',
@@ -26,7 +28,7 @@ block content
 						}
 					)
 					.then( response => {
-						this.msg = response.data.msg
+						this.item = response.data
 						debugger
 					})
 					.catch( error => {})
@@ -36,8 +38,8 @@ block content
 				}
 			},
 			created (){
-				this.get_imgs()
 			}
 		})
 	
 	
+ 

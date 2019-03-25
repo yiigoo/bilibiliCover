@@ -15,15 +15,13 @@ router.get('/cover/img', async (ctx, next) => {
 			superagent.get( url ).end((err, sres) => { 
 				// sres 页面获取到的数据
 				// 成功
-				if ( JSON.parse(sres.text).code === 0 ){
-					data = JSON.parse(sres.text).data
-				}
+				data = JSON.parse(sres.text)
 				resolve(JSON.parse(sres.text))
 			})
 		})
 	}
 	await timeout() 
-	ctx.body = { msg : data }
+	ctx.body = data
 })
 
 module.exports = router
