@@ -1,28 +1,33 @@
 extends layout
 
 block content
-	div#app {{msg}}
+	div#app
 		input(
 			type="text"
 			v-model="keyword"
 			@keyup.enter="search()"
 		)
+		img(
+			:src="msg.pic"
+		)
+		div.test {{msg}}
 
 	script.
 		new Vue({ 
 			el:'#app' , 
 			data : { msg : '' , keyword: '' } ,
 			methods : {
-				get_imgs ( avid = '' ){
+				get_imgs ( aid = '' ){
 					axios.get( '/cover/img',
 						{
 							params : {
-								avid : avid
+								aid : aid
 							}
 						}
 					)
 					.then( response => {
 						this.msg = response.data.msg
+						debugger
 					})
 					.catch( error => {})
 				},
