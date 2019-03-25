@@ -1,7 +1,17 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		script(src='https://cdn.bootcss.com/vue/2.6.10/vue.min.js')
+		script(src='https://unpkg.com/axios/dist/axios.min.js')
+		title= title
+		meta(charset="UTF-8")
+		script.
+			axios.create({
+				headers: {
+					'Content-Type': 'application/json;charset=UTF-8' ,
+					'Cache-Control': "no-cache" 
+				}
+			})
+	body
+		block content
+	

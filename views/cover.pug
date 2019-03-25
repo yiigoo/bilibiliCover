@@ -1,0 +1,38 @@
+extends layout
+
+block content
+	div#app {{msg}}
+		input(
+			type="text"
+			v-model="keyword"
+			@keyup.enter="search()"
+		)
+
+	script.
+		new Vue({ 
+			el:'#app' , 
+			data : { msg : '' , keyword: '' } ,
+			methods : {
+				get_imgs ( avid = '' ){
+					axios.get( '/cover/img',
+						{
+							params : {
+								avid : avid
+							}
+						}
+					)
+					.then( response => {
+						this.msg = response.data.msg
+					})
+					.catch( error => {})
+				},
+				search(){
+					this.get_imgs( this.keyword )
+				}
+			},
+			created (){
+				this.get_imgs()
+			}
+		})
+	
+	
